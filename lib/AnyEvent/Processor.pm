@@ -1,6 +1,6 @@
 package AnyEvent::Processor;
 {
-  $AnyEvent::Processor::VERSION = '0.001';
+  $AnyEvent::Processor::VERSION = '0.002';
 }
 #ABSTRACT: AnyEvent::Processor - Base class for processing something
 
@@ -116,7 +116,7 @@ AnyEvent::Processor - AnyEvent::Processor - Base class for processing something
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 ATTRIBUTES
 
@@ -128,7 +128,7 @@ create your own watcher subclassing AnyEvent::Processor::Watcher.
 
 =head2 watcher
 
-A AnyEvent::FP::Watcher.
+An AnyEvent::Processor::Watcher.
 
 =head2 count
 
@@ -158,7 +158,8 @@ Process something and increment L<count>.
 
 =head2 process_message
 
-Say something about the process. Called by default watcher (verbose mode) each 1s.
+Say something about the process. Called by default watcher (verbose mode) each
+1s. Each time process is called, count in incremented.
 
 =head2 end_process
 

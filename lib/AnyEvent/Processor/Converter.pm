@@ -1,6 +1,6 @@
 package AnyEvent::Processor::Converter;
 {
-  $AnyEvent::Processor::Converter::VERSION = '0.001';
+  $AnyEvent::Processor::Converter::VERSION = '0.002';
 }
 # ABSTRACT: Role for any converter class
 
@@ -23,7 +23,7 @@ AnyEvent::Processor::Converter - Role for any converter class
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 METHODS
 

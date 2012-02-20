@@ -14,4 +14,4 @@ meta-spec:
 name: AnyEvent-Processor
 resources:
   repository: http://git.tamil.fr/git/AnyEvent-Processor
-version: 0.001
+version: 0.002

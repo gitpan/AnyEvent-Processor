@@ -1,6 +1,6 @@
 package AnyEvent::Processor::WatchableTask;
 {
-  $AnyEvent::Processor::WatchableTask::VERSION = '0.001';
+  $AnyEvent::Processor::WatchableTask::VERSION = '0.002';
 }
 #ABSTRACT: Role for tasks which are watchable
 
@@ -24,7 +24,7 @@ AnyEvent::Processor::WatchableTask - Role for tasks which are watchable
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 DESCRIPTION
 

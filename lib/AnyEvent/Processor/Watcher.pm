@@ -1,6 +1,6 @@
 package AnyEvent::Processor::Watcher;
 {
-  $AnyEvent::Processor::Watcher::VERSION = '0.001';
+  $AnyEvent::Processor::Watcher::VERSION = '0.002';
 }
 # ABSTRACT: A watcher echoing a process messages, base class
 
@@ -9,7 +9,9 @@ use AnyEvent;
 
 
 has delay   => ( is => 'rw', isa => 'Int', default => 1 );
+
 has action  => ( is => 'rw', does => 'AnyEvent::Processor::WatchableTask' );
+
 has stopped => ( is => 'rw', isa => 'Int', default => 0 );
 
 has wait => ( is => 'rw' );
@@ -51,7 +53,17 @@ AnyEvent::Processor::Watcher - A watcher echoing a process messages, base class
 
 =head1 VERSION
 
-version 0.001
+version 0.002
+
+=head1 ATTRIBUTES
+
+=head2 delay
+
+Delay between cal to L<action> process_message call
+
+=head2 action
+
+L<AnyEvent::Processor::WatchableTask> class to call.
 
 =head1 METHODS
 

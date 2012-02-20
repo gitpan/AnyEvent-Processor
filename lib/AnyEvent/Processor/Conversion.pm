@@ -1,6 +1,6 @@
 package AnyEvent::Processor::Conversion;
 {
-  $AnyEvent::Processor::Conversion::VERSION = '0.001';
+  $AnyEvent::Processor::Conversion::VERSION = '0.002';
 }
 # ABSTRACT: Base class for conversion type subclasses
 
@@ -19,7 +19,7 @@ has writer => (
     does => 'MooseX::RW::Writer',
 );
 
-has converter => ( is => 'rw', does => 'AnyEvent::FP:Converter' );
+has converter => ( is => 'rw', does => 'AnyEvent::Processor::Converter' );
 
 
 sub run  {
@@ -67,7 +67,7 @@ AnyEvent::Processor::Conversion - Base class for conversion type subclasses
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 ATTRIBUTES
 

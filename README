@@ -3,7 +3,7 @@ NAME
     something
 
 VERSION
-    version 0.001
+    version 0.002
 
 ATTRIBUTES
   verbose
@@ -13,7 +13,7 @@ ATTRIBUTES
     AnyEvent::Processor::Watcher.
 
   watcher
-    A AnyEvent::FP::Watcher.
+    An AnyEvent::Processor::Watcher.
 
   count
     Number of items which have been processed.
@@ -37,7 +37,7 @@ METHODS
 
   process_message
     Say something about the process. Called by default watcher (verbose
-    mode) each 1s.
+    mode) each 1s. Each time process is called, count in incremented.
 
   end_process
     Do something at the end of the process.
