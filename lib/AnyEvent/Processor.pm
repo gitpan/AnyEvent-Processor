@@ -1,6 +1,6 @@
 package AnyEvent::Processor;
 {
-  $AnyEvent::Processor::VERSION = '0.002';
+  $AnyEvent::Processor::VERSION = '0.003';
 }
 #ABSTRACT: AnyEvent::Processor - Base class for processing something
 
@@ -116,7 +116,7 @@ AnyEvent::Processor - AnyEvent::Processor - Base class for processing something
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 ATTRIBUTES
 

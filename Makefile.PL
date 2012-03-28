@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-
+use 5.010;
 
 use ExtUtils::MakeMaker 6.30;
 
@@ -11,7 +11,13 @@ use ExtUtils::MakeMaker 6.30;
 my %WriteMakefileArgs = (
   "ABSTRACT" => "AnyEvent::Processor - Base class for processing something",
   "AUTHOR" => "Fr\303\251d\303\251ric Demians <f.demians\@tamil.fr>",
-  "BUILD_REQUIRES" => {},
+  "BUILD_REQUIRES" => {
+    "File::Find" => 0,
+    "File::Temp" => 0,
+    "Test::More" => 0,
+    "strict" => 0,
+    "warnings" => 0
+  },
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
   },
@@ -19,8 +25,12 @@ my %WriteMakefileArgs = (
   "EXE_FILES" => [],
   "LICENSE" => "gpl",
   "NAME" => "AnyEvent::Processor",
-  "PREREQ_PM" => {},
-  "VERSION" => "0.002",
+  "PREREQ_PM" => {
+    "AnyEvent" => 0,
+    "Moose" => 0,
+    "Moose::Role" => 0
+  },
+  "VERSION" => "0.003",
   "test" => {
     "TESTS" => "t/*.t"
   }

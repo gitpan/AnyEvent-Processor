@@ -1,6 +1,6 @@
 package AnyEvent::Processor::Conversion;
 {
-  $AnyEvent::Processor::Conversion::VERSION = '0.002';
+  $AnyEvent::Processor::Conversion::VERSION = '0.003';
 }
 # ABSTRACT: Base class for conversion type subclasses
 
@@ -67,7 +67,7 @@ AnyEvent::Processor::Conversion - Base class for conversion type subclasses
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 ATTRIBUTES
 
