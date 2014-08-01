@@ -1,9 +1,6 @@
 package AnyEvent::Processor::Watcher;
-{
-  $AnyEvent::Processor::Watcher::VERSION = '0.003';
-}
 # ABSTRACT: A watcher echoing a process messages, base class
-
+$AnyEvent::Processor::Watcher::VERSION = '0.004';
 use Moose;
 use AnyEvent;
 
@@ -41,8 +38,8 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-
 __END__
+
 =pod
 
 =encoding UTF-8
@@ -53,7 +50,7 @@ AnyEvent::Processor::Watcher - A watcher echoing a process messages, base class
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 ATTRIBUTES
 
@@ -77,11 +74,10 @@ Frédéric Demians <f.demians@tamil.fr>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by Fréderic Demians.
+This software is Copyright (c) 2014 by Fréderic Demians.
 
 This is free software, licensed under:
 
   The GNU General Public License, Version 3, June 2007
 
 =cut
-

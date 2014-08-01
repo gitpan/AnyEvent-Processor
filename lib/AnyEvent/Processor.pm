@@ -1,9 +1,6 @@
 package AnyEvent::Processor;
-{
-  $AnyEvent::Processor::VERSION = '0.003';
-}
-#ABSTRACT: AnyEvent::Processor - Base class for processing something
-
+#ABSTRACT: Base class to define an event-driven (AnyEvent) task that could periodically be interrupted by a watcher
+$AnyEvent::Processor::VERSION = '0.004';
 use Moose;
 
 use 5.010;
@@ -104,19 +101,19 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-
 __END__
+
 =pod
 
 =encoding UTF-8
 
 =head1 NAME
 
-AnyEvent::Processor - AnyEvent::Processor - Base class for processing something
+AnyEvent::Processor - Base class to define an event-driven (AnyEvent) task that could periodically be interrupted by a watcher
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 ATTRIBUTES
 
@@ -175,11 +172,10 @@ Frédéric Demians <f.demians@tamil.fr>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by Fréderic Demians.
+This software is Copyright (c) 2014 by Fréderic Demians.
 
 This is free software, licensed under:
 
   The GNU General Public License, Version 3, June 2007
 
 =cut
-

@@ -1,9 +1,6 @@
 package AnyEvent::Processor::Conversion;
-{
-  $AnyEvent::Processor::Conversion::VERSION = '0.003';
-}
 # ABSTRACT: Base class for conversion type subclasses
-
+$AnyEvent::Processor::Conversion::VERSION = '0.004';
 use Moose;
 
 extends 'AnyEvent::Processor';
@@ -55,8 +52,8 @@ __PACKAGE__->meta->make_immutable;
 
 1;
 
-
 __END__
+
 =pod
 
 =encoding UTF-8
@@ -67,7 +64,7 @@ AnyEvent::Processor::Conversion - Base class for conversion type subclasses
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 ATTRIBUTES
 
@@ -89,11 +86,10 @@ Frédéric Demians <f.demians@tamil.fr>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by Fréderic Demians.
+This software is Copyright (c) 2014 by Fréderic Demians.
 
 This is free software, licensed under:
 
   The GNU General Public License, Version 3, June 2007
 
 =cut
-

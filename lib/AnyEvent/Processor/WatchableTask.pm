@@ -1,9 +1,6 @@
 package AnyEvent::Processor::WatchableTask;
-{
-  $AnyEvent::Processor::WatchableTask::VERSION = '0.003';
-}
 #ABSTRACT: Role for tasks which are watchable
-
+$AnyEvent::Processor::WatchableTask::VERSION = '0.004';
 use Moose::Role;
 
 requires 'process_message';
@@ -12,8 +9,8 @@ requires 'end_message';
 
 1;
 
-
 __END__
+
 =pod
 
 =encoding UTF-8
@@ -24,7 +21,7 @@ AnyEvent::Processor::WatchableTask - Role for tasks which are watchable
 
 =head1 VERSION
 
-version 0.003
+version 0.004
 
 =head1 DESCRIPTION
 
@@ -44,11 +41,10 @@ Frédéric Demians <f.demians@tamil.fr>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2012 by Fréderic Demians.
+This software is Copyright (c) 2014 by Fréderic Demians.
 
 This is free software, licensed under:
 
   The GNU General Public License, Version 3, June 2007
 
 =cut
-
