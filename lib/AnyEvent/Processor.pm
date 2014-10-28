@@ -1,6 +1,6 @@
 package AnyEvent::Processor;
 #ABSTRACT: Base class to define an event-driven (AnyEvent) task that could periodically be interrupted by a watcher
-$AnyEvent::Processor::VERSION = '0.004';
+$AnyEvent::Processor::VERSION = '0.005';
 use Moose;
 
 use 5.010;
@@ -113,7 +113,58 @@ AnyEvent::Processor - Base class to define an event-driven (AnyEvent) task that 
 
 =head1 VERSION
 
-version 0.004
+version 0.005
+
+=head1 SYNOPSIS
+
+  package FridgeMonitoring;
+  
+  use Moose;
+  extends 'AnyEvent::Processor';
+  use TemperatureSensor;
+  
+  has sensors => (is => 'rw', isa => 'ArrayRef[TemperatureSensor]');
+  has min => (is => 'rw', isa => 'Int', default => '10');
+  has max => (is => 'rw', isa => 'Int', default => '20');
+  
+  
+  sub process {
+      my $self = shift;
+  
+      my @failed;
+      for my $sensor ( @{$self->sensors} ) {
+          next if $self->sensor->temperature >= $self->min &&
+                  $self->sensor->temperature <= $self->max;
+          push @failed, $sensor;
+      }
+      if ( @failed ) {
+          # Send an email to someone with the list of failed fridges
+      }
+  }
+  
+  sub process_message {
+      my $self = shift;
+      say "[", $self->count, "] Fridges testing";
+  }
+
+package Main;
+
+use FridgeMonitoring;
+
+my $processor = FridgeMonitoring->new(
+    sensors => # Get a list of fridge sensors from somewhere
+    min => 0,
+    max => 40,
+);
+$processor->run();
+
+=head1 DESCRIPTION
+
+A processor task based on this class process anything that can be divided into
+processing clusters. Each cluster is processed one by one by calling the
+process() method. A count is incremented at the end of each cluster. By
+default, a L<AnyEvent::Processor::Watcher> is associated with the class,
+interrupting the processing each second for calling C<process_message>. 
 
 =head1 ATTRIBUTES
 
@@ -143,20 +194,27 @@ Run the process.
 
 =head2 start_process
 
-Something to do at begining of the process.
+Something to do at beginning of the process.
 
 =head2 start_message
 
-Something to say about the process. Called by default watcher when verbose mode enabled.
+Something to say about the process. Called by default watcher when verbose mode
+is enabled. By default, just send to STDOUT 'Start process...'. Your class can
+display another message, or do something else, like sending an email, or a
+notification to a monitoring system like Nagios.
 
 =head2 process
 
-Process something and increment L<count>.
+Process something and increment L<count>. This method has to be surclassed by
+you class if you want to do someting else than incrementing the C<count>
+attribute.
 
 =head2 process_message
 
 Say something about the process. Called by default watcher (verbose mode) each
-1s. Each time process is called, count in incremented.
+1s. By default, just display the C<count> value. Your processor can display
+something else than just the number of processing clusters already processed.
+If your processor monitor the temperature of your fridge, you can display it...
 
 =head2 end_process
 
@@ -164,7 +222,21 @@ Do something at the end of the process.
 
 =head2 end_message
 
-Say something at the end of the process. Called by default watcher.
+Say something at the end of the process. Called by default watcher. 
+
+=head1 SEE ALSO
+
+=over 4
+
+=item *
+
+L<AnyEvent::Processor::Converion
+
+=item *
+
+L<AnyEvent::Processor::Watcher
+
+=back
 
 =head1 AUTHOR
 

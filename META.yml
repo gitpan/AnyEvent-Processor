@@ -24,4 +24,4 @@ requires:
   perl: '5.010'
 resources:
   repository: http://git.tamil.fr/git/AnyEvent-Processor
-version: '0.004'
+version: '0.005'

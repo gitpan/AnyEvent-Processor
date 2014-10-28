@@ -1,6 +1,6 @@
 package AnyEvent::Processor::Converter;
 # ABSTRACT: Role for any converter class
-$AnyEvent::Processor::Converter::VERSION = '0.004';
+$AnyEvent::Processor::Converter::VERSION = '0.005';
 use Moose::Role;
 
 
@@ -20,7 +20,7 @@ AnyEvent::Processor::Converter - Role for any converter class
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 METHODS
 

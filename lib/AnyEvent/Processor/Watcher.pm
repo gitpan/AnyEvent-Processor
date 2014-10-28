@@ -1,6 +1,6 @@
 package AnyEvent::Processor::Watcher;
 # ABSTRACT: A watcher echoing a process messages, base class
-$AnyEvent::Processor::Watcher::VERSION = '0.004';
+$AnyEvent::Processor::Watcher::VERSION = '0.005';
 use Moose;
 use AnyEvent;
 
@@ -50,7 +50,7 @@ AnyEvent::Processor::Watcher - A watcher echoing a process messages, base class
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 ATTRIBUTES
 

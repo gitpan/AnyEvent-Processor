@@ -3,7 +3,53 @@ NAME
     task that could periodically be interrupted by a watcher
 
 VERSION
-    version 0.004
+    version 0.005
+
+SYNOPSIS
+      package FridgeMonitoring;
+  
+      use Moose;
+      extends 'AnyEvent::Processor';
+      use TemperatureSensor;
+  
+      has sensors => (is => 'rw', isa => 'ArrayRef[TemperatureSensor]');
+      has min => (is => 'rw', isa => 'Int', default => '10');
+      has max => (is => 'rw', isa => 'Int', default => '20');
+  
+  
+      sub process {
+          my $self = shift;
+  
+          my @failed;
+          for my $sensor ( @{$self->sensors} ) {
+              next if $self->sensor->temperature >= $self->min &&
+                      $self->sensor->temperature <= $self->max;
+              push @failed, $sensor;
+          }
+          if ( @failed ) {
+              # Send an email to someone with the list of failed fridges
+          }
+      }
+  
+      sub process_message {
+          my $self = shift;
+          say "[", $self->count, "] Fridges testing";
+      }
+
+    package Main;
+
+    use FridgeMonitoring;
+
+    my $processor = FridgeMonitoring->new( sensors => # Get a list of fridge
+    sensors from somewhere min => 0, max => 40, ); $processor->run();
+
+DESCRIPTION
+    A processor task based on this class process anything that can be
+    divided into processing clusters. Each cluster is processed one by one
+    by calling the process() method. A count is incremented at the end of
+    each cluster. By default, a AnyEvent::Processor::Watcher is associated
+    with the class, interrupting the processing each second for calling
+    "process_message".
 
 ATTRIBUTES
   verbose
@@ -26,24 +72,37 @@ METHODS
     Run the process.
 
   start_process
-    Something to do at begining of the process.
+    Something to do at beginning of the process.
 
   start_message
     Something to say about the process. Called by default watcher when
-    verbose mode enabled.
+    verbose mode is enabled. By default, just send to STDOUT 'Start
+    process...'. Your class can display another message, or do something
+    else, like sending an email, or a notification to a monitoring system
+    like Nagios.
 
   process
-    Process something and increment count.
+    Process something and increment count. This method has to be surclassed
+    by you class if you want to do someting else than incrementing the
+    "count" attribute.
 
   process_message
     Say something about the process. Called by default watcher (verbose
-    mode) each 1s. Each time process is called, count in incremented.
+    mode) each 1s. By default, just display the "count" value. Your
+    processor can display something else than just the number of processing
+    clusters already processed. If your processor monitor the temperature of
+    your fridge, you can display it...
 
   end_process
     Do something at the end of the process.
 
   end_message
     Say something at the end of the process. Called by default watcher.
+
+SEE ALSO
+    *   AnyEvent::Processor::Converion
+
+    *   AnyEvent::Processor::Watcher
 
 AUTHOR
     Frédéric Demians <f.demians@tamil.fr>
@@ -54,4 +113,14 @@ COPYRIGHT AND LICENSE
     This is free software, licensed under:
 
       The GNU General Public License, Version 3, June 2007
+
+POD ERRORS
+    Hey! The above document had some coding errors, which are explained
+    below:
+
+    Around line 231:
+        Unterminated L<...> sequence
+
+    Around line 235:
+        Unterminated L<...> sequence
 

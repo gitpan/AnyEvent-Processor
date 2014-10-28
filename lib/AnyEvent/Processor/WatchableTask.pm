@@ -1,6 +1,6 @@
 package AnyEvent::Processor::WatchableTask;
 #ABSTRACT: Role for tasks which are watchable
-$AnyEvent::Processor::WatchableTask::VERSION = '0.004';
+$AnyEvent::Processor::WatchableTask::VERSION = '0.005';
 use Moose::Role;
 
 requires 'process_message';
@@ -21,7 +21,7 @@ AnyEvent::Processor::WatchableTask - Role for tasks which are watchable
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 DESCRIPTION
 
